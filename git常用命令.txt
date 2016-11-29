@@ -1,0 +1,30 @@
+git init  这个目录变成Git可以管理的仓库
+
+1、git checkout -- readme.txt  撤销修改（就是让这个文件回到最近一次git commit或git add时的状态）（删除了也可以从版本库恢复）
+2、git reset head readme.txt   可以把暂存区的修改撤销掉（unstage），重新放回工作区
+
+3、cat readme.txt              查看文件
+4、git add file 				提交文件到版本库的暂存区
+5、git commit 					统一提交暂存区的文件到当前分支
+
+6、git diff HEAD -- readme.txt   命令可以查看工作区和版本库里面最新版本的区别：
+
+7、git log --pretty=oneline（精简展示）查看提交历史记录
+8、git reflog  查看每一次操作记录 包括reset
+9、git reset --hard 3628164（直接会退到某一个版本）  git reset --hard head^(上一个版本)
+
+10、rm file 删除本地文件
+11、git rm file 删除版本库中的文件 删除后还需提交
+
+12、git remote add origin git@github.com:michaelliao/learngit.git   在本地的learngit仓库下运行命令 本地库关联远程库
+    git push -u origin master  就可以把本地库的所有内容推送到远程库上：
+
+13、git branch dev 创建本地分支（直接在主分支目录下执行此命令即可，之后再切换）
+    git checkout dev 切换分支	
+	git push origin local_branch:remote_branch	（把本地的一个非master分支推送到远程 local_branch必须为你本地存在的分支，remote_branch为远程分支，如果remote_branch不存在则会自动创建分支。）
+14、git merge dev（切换到master分支执行此命令后是commit状态，merge完后执行git push）
+
+15、使用别人建好的分支：首先clone git@github.com:lixianzhao/learngit.git，然后 创建一个同名的分支，切换过来就成了，使用git push origin branch-name推送 ，（如果多人公用这个分支一般push前先pull）
+
+	如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。	
+
